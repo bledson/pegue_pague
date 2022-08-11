@@ -3,16 +3,15 @@
 namespace App\Services;
 
 use App\Contracts\MoneyTransferNotificationService;
-use App\Models\MoneyTransfer;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
 
 class EmailMoneyTransferNotificationService implements MoneyTransferNotificationService
 {
 
-    public function send(MoneyTransfer $moneyTransfer) : bool {
+    public function send(User $payee) : bool {
         $response = Http::post(config('app.external_email_service'), [
-            // TODO: adicionar e-mail
-            'email' => $moneyTransfer,
+            'email' => $payee->email,
         ]);
 
         if (!$response->ok()) {
