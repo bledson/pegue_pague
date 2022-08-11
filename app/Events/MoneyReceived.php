@@ -40,6 +40,6 @@ class MoneyReceived
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('money-transfers');
     }
 }

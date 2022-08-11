@@ -15,6 +15,17 @@ class MoneyTransfer extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        // TODO
+        'amount',
+        'payer',
+        'payee',
+        'status'
     ];
+
+    public function payer() {
+        $this->belongsTo(User::class, 'payer');
+    }
+
+    public function payee() {
+        $this->belongsTo(User::class, 'payee');
+    }
 }

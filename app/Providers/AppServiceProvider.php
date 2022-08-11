@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Contracts\MoneyTransferNotificationService;
+use App\Contracts\MoneyTransferRepository;
 use App\Contracts\MoneyTransferService;
 use App\Contracts\UserRepository;
 use App\Contracts\UserService;
+use App\Repositories\RelationalMoneyTransferRepository;
 use App\Repositories\RelationalUserRepository;
 use App\Services\ApiUserService;
 use App\Services\EmailMoneyTransferNotificationService;
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(MoneyTransferService::class, InternalMoneyTransferService::class);
         $this->app->bind(MoneyTransferNotificationService::class, EmailMoneyTransferNotificationService::class);
+        $this->app->bind(MoneyTransferRepository::class, RelationalMoneyTransferRepository::class);
         $this->app->bind(UserService::class, ApiUserService::class);
         $this->app->bind(UserRepository::class, RelationalUserRepository::class);
     }

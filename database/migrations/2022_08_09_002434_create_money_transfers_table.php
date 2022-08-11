@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreign('payee')
                 ->references('id')
                 ->on('users');
+            $table->string('status');
             $table->timestamps();
         });
     }
